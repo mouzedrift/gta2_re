@@ -22,6 +22,8 @@ jobs:
     - name: Install dependencies on Linux
       if: runner.os == 'Linux'
       run: |
+        sudo dpkg --add-architecture i386
+        sudo apt-get update
         sudo apt-get install -y xvfb wine32
 
     - name: Install dependencies on Windows
