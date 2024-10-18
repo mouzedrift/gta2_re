@@ -39,6 +39,8 @@ for:
     - job_name: Linux
   
   install:
+   - sudo apt-get install -y xvfb
+   - xvfb-run
    - sudo dpkg --add-architecture i386
    - sudo mkdir -pm755 /etc/apt/keyrings
    - sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
