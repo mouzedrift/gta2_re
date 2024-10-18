@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+    - name: Checkout repository recursively
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Install dependencies on Linux
+      if: runner.os == 'Linux'
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo mkdir -pm755 /etc/apt/keyrings
+        sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+        sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/winehq-jammy.sources
+        sudo apt update
+        sudo apt install --install-recommends -y winehq-stable
+
+    - name: Install dependencies on Windows
+      if: runner.os == 'Windows'
+      run: |
+        echo No special dependencies for Windows in this example
+
+    - name: Build on Linux
+      if: runner.os == 'Linux'
+      run: |
+        python3 setup.py
+        rm -Rf ./wine
+        export WINEPREFIX=~/.wine32
+        export WINEARCH=win32
+        wine wineboot
+        wine cmd /c build.bat
+
+    - name: Build on Windows
+      if: runner.os == 'Windows'
+      run: |
+        echo Perform Windows build steps here

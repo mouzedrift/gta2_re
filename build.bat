@@ -5,4 +5,4 @@ cd build_vc6
 echo %PATH%
 cmake.exe --version
 cmake.exe .. -G"Visual Studio 6"
-rem msdev decomp.dsw /MAKE "decomp_main - Win32 Release"
+msdev decomp.dsw /MAKE "decomp_main - Win32 Release"
