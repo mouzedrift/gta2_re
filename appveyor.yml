@@ -39,8 +39,6 @@ for:
     - job_name: Linux
   
   install:
-   - sudo apt-get install -y xvfb
-   - xvfb-run
    - sudo dpkg --add-architecture i386
    - sudo mkdir -pm755 /etc/apt/keyrings
    - sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
@@ -58,4 +56,4 @@ for:
    - wine wineboot
    - ls
    - wine reg add HKLM\\SOFTWARE\\Microsoft\\VisualStudio\\6.0\\Setup /v VsCommonDir /t REG_SZ /d Z:\home\appveyor\projects\gta2-re-oo2fq\3rdParty\gta2_re_compile_tools\Common\
-   - wine cmd /c build.bat
+   - xvfb-run wine cmd /c build.bat
