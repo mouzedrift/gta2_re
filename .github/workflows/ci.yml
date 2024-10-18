@@ -23,13 +23,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo dpkg --add-architecture i386
-        sudo apt-get update
         sudo apt-get install -y xvfb wine32
-
-    - name: Install dependencies on Windows
-      if: runner.os == 'Windows'
-      run: |
-        echo No special dependencies for Windows in this example
 
     - name: Build on Linux
       if: runner.os == 'Linux'
@@ -42,4 +36,11 @@ jobs:
     - name: Build on Windows
       if: runner.os == 'Windows'
       run: |
-        echo Perform Windows build steps here
+        python setup.py
+        build.bat
+
+    - name: Upload artifacts on Linux
+      uses: actions/upload-artifact@v2
+      with:
+        name: windows_vc6_main_exe
+        path: build_vc6/Release/decomp_main.exe
