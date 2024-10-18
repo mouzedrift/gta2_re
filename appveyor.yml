@@ -45,11 +45,12 @@ for:
    - git submodule update --init --recursive
 
   build_script:
-   - python setup.py
-   - rm -Rf ./wine
-   - export WINEPREFIX=~/.wine32
-   - export WINEARCH=win32 
-   - wine wineboot
-   - ls
-   - wine reg add HKLM\\SOFTWARE\\Microsoft\\VisualStudio\\6.0\\Setup /v VsCommonDir /t REG_SZ /d Z:\home\appveyor\projects\gta2-re-oo2fq\3rdParty\gta2_re_compile_tools\Common\
-   - wine cmd /c build.bat
+   - cmake --version
+   #- python setup.py
+   #- rm -Rf ./wine
+   #- export WINEPREFIX=~/.wine32
+   #- export WINEARCH=win32 
+   #- wine wineboot
+   #- ls
+   #- wine reg add HKLM\\SOFTWARE\\Microsoft\\VisualStudio\\6.0\\Setup /v VsCommonDir /t REG_SZ /d Z:\home\appveyor\projects\gta2-re-oo2fq\3rdParty\gta2_re_compile_tools\Common\
+   #- wine cmd /c build.bat
