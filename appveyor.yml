@@ -7,6 +7,8 @@ environment:
 
     - job_name: Linux
       APPVEYOR_BUILD_WORKER_IMAGE: Ubuntu2204
+      APPVEYOR_SSH_KEY: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC50zi/cXG9E0YLZQWAGoDmZ9gEy9mtbdWIHv7WmyGErrC9DPLNS8p/G4nFzN9zPfr7WNxyr9SXOA0o1RISOcYn7vMXK0IZFuE5hetZeJrySRC6zU7okEW9cVE77XA6n45jB0oTmqq+GWE87q9zQL/+eob8pwelT2UD5h3UPq5n6mqARum99M6+NcZiKMYNGgN1N3gM51Bpu6XNSdFQzgQn8nNGjdIRQoG0Kv9QBf/zUq+ACoEtYQTpu5hoY4WKm07ZRMDAMMNPeg0bt38fw5X37ZHQNY7QklMXPGMNp1EVzE/Rg51FK+P8LI0TIxSPctl14FvHNzjeCHB7vha1M7oT
+      APPVEYOR_SSH_BLOCK: true
 
 platform:
  - x86
@@ -39,6 +41,7 @@ for:
     - job_name: Linux
   
   install:
+   - sh: curl -sflL 'https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-ssh.sh' | bash -e -
    - sudo dpkg --add-architecture i386
    - sudo mkdir -pm755 /etc/apt/keyrings
    - sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
