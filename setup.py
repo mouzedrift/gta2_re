@@ -25,7 +25,7 @@ def main():
     vs_common_dir = vs_common_dir.replace("/", "\\")
     vs_common_dir = vs_common_dir.replace("\\", "\\\\")
 
-    #print(f"Setting VsCommonDir to: {vs_common_dir}")
+    print(f"Setting VsCommonDir to: {vs_common_dir}")
 
     with open("vscommondir.reg", "w") as f:
         f.write("Windows Registry Editor Version 5.00\n\n")

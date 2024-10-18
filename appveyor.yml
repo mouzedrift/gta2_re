@@ -45,7 +45,4 @@ for:
 
   build_script:
    - python setup.py
-   - rm -Rf ./wine
-   - WINEPREFIX=~/.wine32 WINEARCH=win32 wineboot
-   - ls
-   - WINEPREFIX=~/.wine32 WINEARCH=win32 wine cmd /c build.bat
+   - wine32 cmd /c build.bat
