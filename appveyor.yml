@@ -45,6 +45,7 @@ for:
    - git submodule update --init --recursive
 
   build_script:
+   - wine --version
    - python setup.py
    - rm -Rf ./wine
    - export WINEPREFIX=~/.wine32
