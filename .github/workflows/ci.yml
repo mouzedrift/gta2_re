@@ -32,8 +32,8 @@ jobs:
       run: |
         python3 setup.py
         rm -Rf ./wine
-        WINEPREFIX=~/.wine32 WINEARCH=win32 xvfb-run wineboot
-        WINEPREFIX=~/.wine32 WINEARCH=win32 xvfb-run wine cmd /c build.bat
+        WINEPREFIX=~/.wine32 WINEARCH=win32 xvfb-run -e /dev/stdout wineboot
+        WINEPREFIX=~/.wine32 WINEARCH=win32 xvfb-run -e /dev/stdout wine cmd /c build.bat
 
     - name: Build on Windows
       if: runner.os == 'Windows'
