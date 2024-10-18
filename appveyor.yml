@@ -40,8 +40,9 @@ for:
   
   install:
    - sudo apt update
-   - sudo dpkg --add-architecture i386
-   - sudo apt-get install -y wine32
+   #- sudo dpkg --add-architecture i386
+   #- sudo apt-get install -y wine32
+   - sudo apt-get install -y wine
    - git submodule update --init --recursive
 
   build_script:
