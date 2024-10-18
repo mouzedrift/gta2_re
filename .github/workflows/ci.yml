@@ -39,8 +39,8 @@ jobs:
         python setup.py
         build.bat
 
-    - name: Upload artifacts on Linux
-      uses: actions/upload-artifact@v2
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
       with:
         name: windows_vc6_main_exe
         path: build_vc6/Release/decomp_main.exe
