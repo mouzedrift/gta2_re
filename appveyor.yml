@@ -46,7 +46,7 @@ for:
 
   build_script:
    - wine --version
-   - python setup.py
+   - python3 setup.py
    - rm -Rf ./wine
    - export WINEPREFIX=~/.wine32
    - export WINEARCH=win32 
